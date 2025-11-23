@@ -1,0 +1,34 @@
+CUADRATUR-APP
+│
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── FileUploader.tsx
+│   │   ├── AnalysisResultTable.tsx
+│   │   └── StatusBadge.tsx
+│   │
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── AnalysisReview.tsx
+│   │   └── History.tsx
+│   │
+│   ├── hooks/
+│   │   └── useUploadAndAnalyze.ts
+│   │
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── main.tsx
+│
+├── .env
+├── .gitignore
+├── .txt
+├── eslint.config.js
+├── index.html
+├── package.json
+├── README.md
+├──talwind.config.js
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts

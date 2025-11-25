@@ -1,3 +1,4 @@
+// src/pages/Home.tsx
 import { useState } from "react";
 import FileUploader from "../components/FileUploader";
 import AnalysisResultTable from "../components/AnalysisResultTable";

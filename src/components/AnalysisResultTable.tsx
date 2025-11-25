@@ -1,3 +1,4 @@
+// src/components/AnalysisResultTable.tsx
 import type { AnalysisItem } from "../types/AnalysisItem";
 
 interface Props {

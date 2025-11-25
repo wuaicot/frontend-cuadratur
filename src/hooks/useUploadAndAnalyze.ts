@@ -1,3 +1,4 @@
+// src/hooks/useUploadAndAnalyze.ts
 import { useState } from "react";
 import type { AnalysisItem } from "../types/AnalysisItem";
 
@@ -64,13 +65,7 @@ export function useUploadAndAnalyze() {
         throw new Error(errMsg);
       }
 
-      let data: unknown = null;
-
-      try {
-        data = await response.json();
-      } catch {
-        throw new Error("El backend devolvió una respuesta inválida.");
-      }
+      const data = await response.json();
 
       console.log("[HOOK] Payload recibido:", data);
 
@@ -88,7 +83,6 @@ export function useUploadAndAnalyze() {
       console.log("[HOOK] Resultado final validado:", validData);
 
       setResult(validData);
-
     } catch (err) {
       console.error("[HOOK] ERROR:", err);
       setError(err instanceof Error ? err.message : "Error inesperado.");

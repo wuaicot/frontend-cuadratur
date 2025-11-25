@@ -3,10 +3,22 @@ import type { AnalysisItem } from "../types/AnalysisItem";
 
 interface Props {
   items: AnalysisItem[];
-  onEdit?: () => void;
+  onEdit?: (index: number, key: string, value: number) => void;
 }
 
-export default function AnalysisResultTable({ items }: Props) {
+export default function AnalysisResultTable({ items, onEdit }: Props) {
+  const handleChange = (
+    index: number,
+    key: keyof AnalysisItem,
+    value: string
+  ) => {
+    if (!onEdit) return;
+    const numeric = Number(value);
+    if (!isNaN(numeric)) {
+      onEdit(index, key, numeric);
+    }
+  };
+
   return (
     <table className="w-full border mt-4">
       <thead className="bg-gray-200">
@@ -23,8 +35,37 @@ export default function AnalysisResultTable({ items }: Props) {
         {items.map((item, i) => (
           <tr key={i}>
             <td className="border p-2">{item.nombre}</td>
-            <td className="border p-2">{item.teorico}</td>
-            <td className="border p-2">{item.contado}</td>
+
+            <td className="border p-2">
+              {onEdit ? (
+                <input
+                  type="number"
+                  className="w-full border p-1"
+                  value={item.teorico}
+                  onChange={(e) =>
+                    handleChange(i, "teorico", e.target.value)
+                  }
+                />
+              ) : (
+                item.teorico
+              )}
+            </td>
+
+            <td className="border p-2">
+              {onEdit ? (
+                <input
+                  type="number"
+                  className="w-full border p-1"
+                  value={item.contado}
+                  onChange={(e) =>
+                    handleChange(i, "contado", e.target.value)
+                  }
+                />
+              ) : (
+                item.contado
+              )}
+            </td>
+
             <td className="border p-2">{item.diferencia}</td>
             <td className="border p-2">{item.estado}</td>
           </tr>

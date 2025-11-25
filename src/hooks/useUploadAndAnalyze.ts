@@ -6,7 +6,6 @@ export interface AnalysisResult {
   items: AnalysisItem[];
 }
 
-// Define the structure of the files object
 export interface CuadraturaFiles {
   reporteZ: File | null;
   planillaCaja: File | null;
@@ -53,11 +52,26 @@ export function useUploadAndAnalyze() {
       console.log("[HOOK] Respuesta recibida:", response.status);
 
       if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.error || "Error procesando los archivos.");
+        let errMsg = "Error procesando los archivos.";
+
+        try {
+          const errData = await response.json();
+          errMsg = errData.error || errMsg;
+        } catch {
+          console.warn("[HOOK] Backend devolvió error sin JSON válido.");
+        }
+
+        throw new Error(errMsg);
       }
 
-      const data: unknown = await response.json();
+      let data: unknown = null;
+
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("El backend devolvió una respuesta inválida.");
+      }
+
       console.log("[HOOK] Payload recibido:", data);
 
       if (
@@ -66,6 +80,7 @@ export function useUploadAndAnalyze() {
         !("fecha" in data) ||
         !("items" in data)
       ) {
+        console.error("[HOOK] Respuesta inesperada:", data);
         throw new Error("Estructura inesperada en la respuesta del análisis.");
       }
 

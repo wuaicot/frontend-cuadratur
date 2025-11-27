@@ -1,3 +1,4 @@
+// src/pages/AnalysisReview.tsx
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AnalysisResultTable from "../components/AnalysisResultTable";
@@ -9,20 +10,20 @@ export default function AnalysisReview() {
     if (location.state?.items) {
       return location.state.items;
     }
-    const storedResult = sessionStorage.getItem("analysisResult");
-    if (storedResult) {
-      return JSON.parse(storedResult).items || [];
+    const stored = sessionStorage.getItem("analysisResult");
+    if (stored) {
+      return JSON.parse(stored).items || [];
     }
     return [];
   });
 
   useEffect(() => {
-    // This effect ensures that if we navigate to this page with new state, it updates.
-    // And it preserves the sessionStorage logic as a fallback.
     if (location.state?.items) {
       setItems(location.state.items);
-      // Optionally, update sessionStorage as well
-      sessionStorage.setItem("analysisResult", JSON.stringify({ items: location.state.items }));
+      sessionStorage.setItem(
+        "analysisResult",
+        JSON.stringify({ items: location.state.items })
+      );
     }
   }, [location.state]);
 

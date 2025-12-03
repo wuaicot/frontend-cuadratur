@@ -20,8 +20,8 @@ export default function AnalysisResultTable({ items, onEdit }: Props) {
   };
 
   return (
-    <table className="w-full border mt-4">
-      <thead className="bg-gray-200">
+    <table className="w-full rounded-lg mt-4">
+      <thead className="bg-gray-200 text-black">
         <tr>
           <th className="border p-2">Nombre</th>
           <th className="border p-2">Teórico</th>

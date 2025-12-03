@@ -6,15 +6,24 @@ import History from "./pages/History";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-100">
-        <header className="bg-white shadow p-4 flex justify-between items-center">
-          
-          <h1 className="text-lg font-bold"> <span className="border">C</span>UADRATURapp</h1>
+      <div className="min-h-screen ">
+        <header className=" shadow p-4 flex justify-between items-center">
+          <h1 className="mt-8 text-sm">
+            <span className="border">C</span>
+            <span className="text-[0.6em]">UADRATUR</span>
+          </h1>
+          <p className="border mt-12 ml-1 pl-1 pr-1">Obelisco</p>
 
-          <nav className="flex gap-4 text-sm align-center">
-            <a href="/" className="hover:underline">Home</a>
-            <a href="/analysis-review" className="hover:underline">Revisión</a>
-            <a href="/history" className="hover:underline">Historial</a>
+          <nav className="flex text-sm align-center mt-8">
+            <a href="/" className="hover:underline">
+              Home
+            </a>
+            <a href="/analysis-review" className="hover:underline">
+              Revisión
+            </a>
+            <a href="/history" className="hover:underline">
+              Historial
+            </a>
           </nav>
         </header>
 

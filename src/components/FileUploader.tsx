@@ -16,13 +16,13 @@ export default function FileUploader({ onFileSelect }: Props) {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 ">
       <input
         type="file"
         accept=".xlsx, .xls, image/jpeg, image/png"
         ref={fileInputRef}
         onChange={handleChange}
-        className="border p-2 rounded"
+        className="border p-2 rounded cursor-pointer hover:border-blue-500 transition-colors duration-200"
       />
     </div>
   );

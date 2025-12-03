@@ -34,20 +34,20 @@ export default function Home() {
   const canAnalyze = files.reporteZ && files.planillaCaja && files.planillaCocina;
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Análisis de Cuadratura</h2>
+    <div className="max-w-lg mx-auto  p-8 shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 ">Análisis de Cuadratura</h2>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div>
-          <label className="block text-lg font-medium text-gray-700 mb-2">1. Reporte Z</label>
+          <label className=" text-lg font-medium text-gray-700 mb-4 ">1. Reporte Z</label>
           <FileUploader onFileSelect={(file) => handleFileSelect("reporteZ", file)} />
         </div>
         <div>
-          <label className="block text-lg font-medium text-gray-700 mb-2">2. Planilla de Caja</label>
+          <label className=" text-lg font-medium text-gray-700 mb-2 pointer-">2. Planilla de Caja</label>
           <FileUploader onFileSelect={(file) => handleFileSelect("planillaCaja", file)} />
         </div>
         <div>
-          <label className="block text-lg font-medium text-gray-700 mb-2">3. Planilla de Cocina</label>
+          <label className=" text-lg font-medium text-gray-700 mb-2">3. Planilla de Cocina</label>
           <FileUploader onFileSelect={(file) => handleFileSelect("planillaCocina", file)} />
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function Home() {
       </button>
 
       {error && (
-        <p className="mt-4 text-red-600 font-medium border border-red-300 bg-red-50 p-3 rounded-md">
+        <p className="mt-4 text-red-600 font-medium  border-red-300  p-3 rounded-md">
           {error}
         </p>
       )}
